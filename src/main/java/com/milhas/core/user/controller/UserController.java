@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/users")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/{idUser}")
-    public ResponseEntity<UserResponseDTO> getById(@PathVariable(value = "idUser" ) UUID idUser){
+    public ResponseEntity<UserResponseDTO> getById(@PathVariable UUID idUser){
         return ResponseEntity.ok().body(userService.getById(idUser));
     }
 
@@ -36,12 +36,12 @@ public class UserController {
     }
 
     @PutMapping(value = "/{idUser}")
-    public ResponseEntity<UserResponseDTO> update(@PathVariable(value = "idUser") UUID idUser, @RequestBody UserRequestDTO request ){
+    public ResponseEntity<UserResponseDTO> update(@PathVariable UUID idUser, @RequestBody UserRequestDTO request ){
         return ResponseEntity.ok().body(userService.update(idUser, request));
     }
 
     @DeleteMapping(value = "/{idUser}")
-    public void delete(@PathVariable(value = "idUser") UUID idUser){
+    public void delete(@PathVariable UUID idUser){
         userService.delete(idUser);
     }
 

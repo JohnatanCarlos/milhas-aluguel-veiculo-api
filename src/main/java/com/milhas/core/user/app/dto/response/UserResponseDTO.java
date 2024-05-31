@@ -12,8 +12,6 @@ public class UserResponseDTO {
 
     private UUID idUser;
 
-    private UUID idCredential;
-
     private String name;
 
     private String documentNumber;
@@ -38,7 +36,6 @@ public class UserResponseDTO {
 
     public UserResponseDTO(User user) {
         this.idUser = user.getIdUser();
-        this.idCredential = user.getIdCredential();
         this.name = user.getName();
         this.documentNumber = user.getDocumentNumber();
         this.documentType = user.getDocumentType();

@@ -8,8 +8,10 @@ import com.milhas.core.user.infra.db.repository.UserRepository;
 import com.milhas.core.user.mapper.UserMapper;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,13 +37,15 @@ public class UserServiceImpl implements UserService {
         return userMapper.toResponse(user);
     }
 
-    @Override
+    @Transactional
     public UserResponseDTO save(UserRequestDTO request) {
         User user = userMapper.toEntity(request);
+        user.setCreateDate(LocalDateTime.now());
+        user.setIsActive(true);
         return userMapper.toResponse(userRepository.save(user));
     }
 
-    @Override
+    @Transactional
     public UserResponseDTO update(UUID idUser, UserRequestDTO request) {
         User user = userRepository.findById(idUser).orElseThrow(()-> new RuntimeException("User was not found"));
         userMapper.toResponseUpdate(user, request);

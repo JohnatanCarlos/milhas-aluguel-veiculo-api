@@ -1,9 +1,6 @@
 package com.milhas.core.user.infra.db.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,11 +18,13 @@ import java.util.UUID;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id_user", nullable = false, unique = true)
     private UUID idUser;
 
-    @Column(name = "id_credential", nullable = false, unique = true)
-    private UUID idCredential;
+    @OneToOne
+    @JoinColumn(name = "id_credential", referencedColumnName = "id_credential")
+    private UserCredential idCredential;
 
     @Column(name = "name", nullable = false)
     private String name;
