@@ -41,8 +41,9 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/{idUser}")
-    public void delete(@PathVariable UUID idUser){
+    public ResponseEntity<Void> delete(@PathVariable UUID idUser){
         userService.delete(idUser);
+        return ResponseEntity.noContent().build(); // RETURN HTTP 204 NO CONTENT
     }
 
 }

@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserResponseDTO> getAll(String name, String documentNumber, String nationality, String passport ) {
-        return userMapper.toResponseList(userRepository.findAll());
+        return userMapper.toResponseList(userRepository.findAllCustom( name, documentNumber, nationality, passport));
     }
 
     @Override
