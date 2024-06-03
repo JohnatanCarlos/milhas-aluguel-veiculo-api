@@ -11,7 +11,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_user_credential")
+@Table(name = "user_credential")
 public class UserCredential {
 
     @Id
