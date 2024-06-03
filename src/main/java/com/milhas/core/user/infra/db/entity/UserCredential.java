@@ -22,13 +22,13 @@ public class UserCredential {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "acces_token")
-    private String accesToken;
+    @Column(name = "acess_token")
+    private String acessToken;
 
     @Column(name = "refresh_token")
     private String refreshToken;
 
-    @Column(name = "rule")
-    private String rule;
+    @Column(name = "role")
+    private String role;
 
 }

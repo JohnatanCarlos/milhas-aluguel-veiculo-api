@@ -21,4 +21,6 @@ public class UserRequestDTO {
     private String email;
 
     private LocalDate dateBirthday;
+
+    private String password;
 }

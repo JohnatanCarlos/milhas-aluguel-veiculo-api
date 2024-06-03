@@ -23,8 +23,8 @@ public class User {
     private UUID idUser;
 
     @OneToOne(fetch = FetchType.LAZY)  //QUANDO A RECUPERAÇÃO É CONFIGURADA COMO LAZY OS DADOS DA ENTITY RELACIONADA NAO SÃO CARREGADOS AUTOMATICAMENTE QUANDO A ENTITY PRINCIPAL É CARREGADA
-    @JoinColumns({@JoinColumn(name = "id_credential", referencedColumnName = "id_credential", nullable = false, insertable = false, updatable = false)})
-    private UserCredential idCredential;
+    @JoinColumn(name = "id_credential", nullable = false)
+    private UserCredential userCredential;
 
     @Column(name = "name", nullable = false)
     private String name;

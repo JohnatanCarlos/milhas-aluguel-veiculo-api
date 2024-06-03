@@ -4,6 +4,8 @@ import com.milhas.core.user.app.dto.request.UserRequestDTO;
 import com.milhas.core.user.app.dto.response.UserResponseDTO;
 import com.milhas.core.user.domain.service.UserService;
 import com.milhas.core.user.infra.db.entity.User;
+import com.milhas.core.user.infra.db.entity.UserCredential;
+import com.milhas.core.user.infra.db.repository.UserCredentialRepository;
 import com.milhas.core.user.infra.db.repository.UserRepository;
 import com.milhas.core.user.mapper.UserMapper;
 import org.springframework.context.annotation.Primary;
@@ -25,6 +27,9 @@ public class UserServiceImpl implements UserService {
     @Inject
     UserMapper userMapper;
 
+    @Inject
+    UserCredentialRepository userCredentialRepository;
+
 
     @Override
     public List<UserResponseDTO> getAll(String name, String documentNumber, String nationality, String passport ) {
@@ -38,10 +43,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public UserResponseDTO save(UserRequestDTO request) {
-        User user = userMapper.toEntity(request);
+    public UserResponseDTO save(UserRequestDTO requestDTO) {
+        UserCredential userCredential = new UserCredential();
+        userCredential.setPassword(requestDTO.getPassword());
+        userCredential = userCredentialRepository.save(userCredential);
+
+        User user = userMapper.toEntity(requestDTO);
         user.setCreateDate(LocalDateTime.now());
         user.setIsActive(true);
+        user.setUserCredential(userCredential);
         return userMapper.toResponse(userRepository.save(user));
     }
 
