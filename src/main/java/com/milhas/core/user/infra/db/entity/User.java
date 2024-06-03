@@ -14,7 +14,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_user")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -60,7 +60,7 @@ public class User {
     private Boolean isActive;
 
     @Builder
-    public User(String name, String documentNumber, String documentType, String nationality, String passport, String phone, String email, LocalDate dateBirthday) {
+    public User(String name, String documentNumber, String documentType, String nationality, String passport, String phone, String email, LocalDate dateBirthday, UserCredential userCredential) {
         this.name = name;
         this.documentNumber = documentNumber;
         this.documentType = documentType;
