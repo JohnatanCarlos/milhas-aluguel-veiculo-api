@@ -22,8 +22,8 @@ public class UserCredential {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "acess_token")
-    private String acessToken;
+    @Column(name = "access_token")
+    private String accessToken;
 
     @Column(name = "refresh_token")
     private String refreshToken;
