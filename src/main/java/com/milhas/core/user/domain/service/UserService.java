@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface UserService {
 
-    List<UserResponseDTO> getAll(String name, String documentNumber, String nationality, String passport);
+    List<UserResponseDTO> getAll(String name, String documentNumber, String nationality);
 
     UserResponseDTO getById(UUID idUser);
 

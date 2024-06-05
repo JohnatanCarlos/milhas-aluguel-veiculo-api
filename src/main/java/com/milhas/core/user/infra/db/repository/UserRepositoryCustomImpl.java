@@ -21,7 +21,7 @@ public class UserRepositoryCustomImpl implements  UserRepositoryCustom{
     private EntityManager entityManager;
 
     @Override
-    public List<User> findAllCustom(String name, String documentNumber, String nationality, String passport) {
+    public List<User> findAllCustom(String name, String documentNumber, String nationality) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> query = cb.createQuery(User.class);
         Root<User> user = query.from(User.class);
@@ -37,10 +37,6 @@ public class UserRepositoryCustomImpl implements  UserRepositoryCustom{
         if (StringUtils.hasText(nationality)) {
             predicates.add(cb.equal(user.get("nationality"), nationality));
         }
-        if (StringUtils.hasText(passport)) {
-            predicates.add(cb.equal(user.get("passport"), passport));
-        }
-
         query.where(predicates.toArray(new Predicate[0]));
 
         return entityManager.createQuery(query).getResultList();
