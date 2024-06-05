@@ -14,8 +14,6 @@ public class UserRequestDTO {
 
     private String nationality;
 
-    private String passport;
-
     private String phone;
 
     private String email;

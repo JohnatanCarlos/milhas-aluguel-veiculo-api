@@ -49,8 +49,6 @@ public class UserServiceImpl implements UserService {
         userCredential = userCredentialRepository.save(userCredential);
 
         User user = userMapper.toEntity(requestDTO);
-        user.setCreateDate(LocalDateTime.now());
-        user.setIsActive(true);
         user.setUserCredential(userCredential);
         return userMapper.toResponse(userRepository.save(user));
     }
@@ -58,6 +56,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserResponseDTO update(UUID idUser, UserRequestDTO request) {
         User user = userRepository.findById(idUser).orElseThrow(()-> new RuntimeException("User was not found"));
+        user.setUpdateDate(LocalDateTime.now());
         userMapper.toResponseUpdate(user, request);
         return  userMapper.toResponse(userRepository.save(user));
     }

@@ -38,9 +38,6 @@ public class User {
     @Column(name = "nationality", nullable = false)
     private String nationality;
 
-    @Column(name = "passport", nullable = false, unique = true)
-    private String passport;
-
     @Column(name = "phone", nullable = false)
     private String phone;
 
@@ -51,21 +48,20 @@ public class User {
     private LocalDate dateBirthday;
 
     @Column(name = "create_date", nullable = false)
-    private LocalDateTime createDate;
+    private LocalDateTime createDate = LocalDateTime.now();
 
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
     @Column(name = "is_active", nullable = false)
-    private Boolean isActive;
+    private Boolean isActive = true;
 
     @Builder
-    public User(String name, String documentNumber, String documentType, String nationality, String passport, String phone, String email, LocalDate dateBirthday, UserCredential userCredential) {
+    public User(String name, String documentNumber, String documentType, String nationality, String phone, String email, LocalDate dateBirthday) {
         this.name = name;
         this.documentNumber = documentNumber;
         this.documentType = documentType;
         this.nationality = nationality;
-        this.passport = passport;
         this.phone = phone;
         this.email = email;
         this.dateBirthday = dateBirthday;

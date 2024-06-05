@@ -20,8 +20,6 @@ public class UserResponseDTO {
 
     private String nationality;
 
-    private String passport;
-
     private String phone;
 
     private String email;
@@ -40,7 +38,6 @@ public class UserResponseDTO {
         this.documentNumber = user.getDocumentNumber();
         this.documentType = user.getDocumentType();
         this.nationality = user.getNationality();
-        this.passport = user.getPassport();
         this.phone = user.getPhone();
         this.email = user.getEmail();
         this.dateBirthday = user.getDateBirthday();

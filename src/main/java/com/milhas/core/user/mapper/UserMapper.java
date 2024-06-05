@@ -18,7 +18,6 @@ public class UserMapper {
                 .documentNumber(request.getDocumentNumber())
                 .documentType(request.getDocumentType())
                 .nationality(request.getNationality())
-                .passport(request.getPassport())
                 .phone(request.getPhone())
                 .email(request.getEmail())
                 .dateBirthday(request.getDateBirthday())
@@ -41,7 +40,6 @@ public class UserMapper {
         user.setDocumentNumber(request.getDocumentNumber());
         user.setDocumentType(request.getDocumentType());
         user.setNationality(request.getNationality());
-        user.setPassport(request.getPassport());
         user.setPhone(request.getPhone());
         user.setEmail(user.getEmail());
         user.setDateBirthday(request.getDateBirthday());
