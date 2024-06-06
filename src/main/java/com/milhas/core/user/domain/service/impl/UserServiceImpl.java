@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO getById(UUID idUser) {
-        User user = userRepository.findById(idUser).orElseThrow(()-> new RuntimeException("User was not found"));
+        User user = returnUserById(idUser);
         return userMapper.toResponse(user);
     }
 
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     public UserResponseDTO update(UUID idUser, UserRequestDTO request) {
-        User user = userRepository.findById(idUser).orElseThrow(()-> new RuntimeException("User was not found"));
+        User user = returnUserById(idUser);
         user.setUpdateDate(LocalDateTime.now());
         userMapper.toResponseUpdate(user, request);
         return  userMapper.toResponse(userRepository.save(user));
@@ -63,8 +63,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(UUID idUser) {
-        User user = userRepository.findById(idUser).orElseThrow(()-> new RuntimeException("User was not found"));
+        User user = returnUserById(idUser);
         userRepository.deleteById(idUser);
         userCredentialRepository.deleteById(user.getUserCredential().getIdCredential());
+    }
+
+    private User returnUserById(UUID idUser){
+        return userRepository.findById(idUser).orElseThrow(()-> new RuntimeException("User was not found"));
     }
 }
