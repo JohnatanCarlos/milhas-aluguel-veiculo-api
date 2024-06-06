@@ -18,10 +18,12 @@ public class UserController {
 
     @Inject
     UserService userService;
-
+    
     @GetMapping
-    public ResponseEntity<List<UserResponseDTO>> getAll(@RequestParam(required = false) String name, @RequestParam(required = false) String documentNumber,
-                                                        @RequestParam(required = false)  String nationality, @RequestParam(required = false) String passport ){
+    public ResponseEntity<List<UserResponseDTO>> getAll(@RequestParam(required = false) String name,
+                                                        @RequestParam(required = false) String documentNumber,
+                                                        @RequestParam(required = false)  String nationality,
+                                                        @RequestParam(required = false) String passport ){
         return ResponseEntity.ok().body(userService.getAll(name, documentNumber, nationality, passport));
     }
 
