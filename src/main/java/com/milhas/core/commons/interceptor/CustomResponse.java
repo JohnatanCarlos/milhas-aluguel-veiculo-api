@@ -29,9 +29,9 @@ public class CustomResponse implements ResponseBodyAdvice<Object> {
                                   ServerHttpResponse response) {
         if (body instanceof List<?>) {
             List<?> bodyList = (List<?>) body;
-            CustomResponseDTO<Object> customResponse = new CustomResponseDTO<>((List<Object>) bodyList, bodyList.size());
-            return customResponse;
+            return new CustomResponseDTO<>(bodyList, bodyList.size());
+        } else {
+            return new CustomResponseDTO<>(body, body != null ? 1 : 0);
         }
-        return body;
     }
 }
