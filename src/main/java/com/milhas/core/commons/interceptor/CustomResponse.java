@@ -1,6 +1,7 @@
 package com.milhas.core.commons.interceptor;
 
 import com.milhas.core.commons.dto.CustomResponseDTO;
+import com.milhas.core.commons.dto.ErrorMessageDTO;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -27,6 +28,11 @@ public class CustomResponse implements ResponseBodyAdvice<Object> {
                                   Class selectedConverterType,
                                   ServerHttpRequest request,
                                   ServerHttpResponse response) {
+
+        if (body instanceof ErrorMessageDTO) {
+            return body;
+        }
+
         if (body instanceof List<?>) {
             List<?> bodyList = (List<?>) body;
             return new CustomResponseDTO<>(bodyList, bodyList.size());

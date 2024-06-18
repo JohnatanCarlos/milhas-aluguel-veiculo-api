@@ -1,5 +1,6 @@
 package com.milhas.core.user.domain.service.impl;
 
+import com.milhas.core.commons.exception.UserNotFoundException;
 import com.milhas.core.user.app.dto.request.UserRequestDTO;
 import com.milhas.core.user.app.dto.response.UserResponseDTO;
 import com.milhas.core.user.domain.service.UserService;
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO getById(UUID idUser) {
-        User user = userRepository.findById(idUser).orElseThrow(()-> new RuntimeException("User was not found"));
+        User user = userRepository.findById(idUser).orElseThrow(()-> new UserNotFoundException());
         return userMapper.toResponse(user);
     }
 
