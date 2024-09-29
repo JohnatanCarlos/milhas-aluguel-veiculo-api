@@ -1,8 +1,11 @@
 package com.milhas.core.user.controller;
 
+import com.milhas.core.commons.dto.Response;
 import com.milhas.core.user.app.dto.request.UserRequestDTO;
 import com.milhas.core.user.app.dto.response.UserResponseDTO;
 import com.milhas.core.user.domain.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,32 +23,33 @@ public class UserController {
     UserService userService;
     
     @GetMapping
-    public ResponseEntity<List<UserResponseDTO>> getAll(@RequestParam(required = false) String name,
-                                                        @RequestParam(required = false) String documentNumber,
-                                                        @RequestParam(required = false)  String nationality,
-                                                        @RequestParam(required = false) String passport ){
-        return ResponseEntity.ok().body(userService.getAll(name, documentNumber, nationality, passport));
+    @Operation(summary = "User", description = "Retorna todos os usuários podendo ser usado como filtro atraves dos parametros")
+    public Response<List<UserResponseDTO>> getAll(@RequestParam(required = false) String name,
+                                                  @RequestParam(required = false) String documentNumber,
+                                                  @RequestParam(required = false)  String nationality,
+                                                  @RequestParam(required = false) String passport ){
+        return new Response<>(userService.getAll(name, documentNumber, nationality, passport), userService.getAll(name, documentNumber, nationality, passport).size());
     }
 
     @GetMapping(value = "/{idUser}")
-    public ResponseEntity<UserResponseDTO> getById(@PathVariable UUID idUser){
-        return ResponseEntity.ok().body(userService.getById(idUser));
+    public Response<UserResponseDTO> getById(@PathVariable UUID idUser){
+        return new Response<>(userService.getById(idUser));
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDTO> save(@RequestBody UserRequestDTO request){
-        return ResponseEntity.ok(userService.save(request));
+    public Response<UserResponseDTO> save(@RequestBody UserRequestDTO request){
+        return new Response<>(userService.save(request));
     }
 
     @PutMapping(value = "/{idUser}")
-    public ResponseEntity<UserResponseDTO> update(@PathVariable UUID idUser, @RequestBody UserRequestDTO request ){
-        return ResponseEntity.ok().body(userService.update(idUser, request));
+    public Response<UserResponseDTO> update(@PathVariable UUID idUser, @RequestBody UserRequestDTO request ){
+        return new Response<>(userService.update(idUser, request));
     }
 
     @DeleteMapping(value = "/{idUser}")
-    public ResponseEntity<Void> delete(@PathVariable UUID idUser){
+    public Response<Void> delete(@PathVariable UUID idUser){
         userService.delete(idUser);
-        return ResponseEntity.noContent().build(); // RETURN HTTP 204 NO CONTENT
+        return new Response<>();
     }
 
 }

@@ -1,5 +1,6 @@
 package com.milhas.core.user.infra.db.entity;
 
+import com.milhas.core.user.enumerable.UserRole;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,6 @@ public class UserCredential {
     private String refreshToken;
 
     @Column(name = "role")
-    private String role;
+    private UserRole role;
 
 }

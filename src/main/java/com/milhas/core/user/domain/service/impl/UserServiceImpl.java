@@ -1,5 +1,6 @@
 package com.milhas.core.user.domain.service.impl;
 
+import com.milhas.core.commons.enumerable.MessageError;
 import com.milhas.core.commons.exception.UserNotFoundException;
 import com.milhas.core.user.app.dto.request.UserRequestDTO;
 import com.milhas.core.user.app.dto.response.UserResponseDTO;
@@ -9,7 +10,12 @@ import com.milhas.core.user.infra.db.entity.UserCredential;
 import com.milhas.core.user.infra.db.repository.UserCredentialRepository;
 import com.milhas.core.user.infra.db.repository.UserRepository;
 import com.milhas.core.user.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +26,7 @@ import java.util.UUID;
 
 @Service
 @Primary
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Inject
     UserRepository userRepository;
@@ -30,6 +36,9 @@ public class UserServiceImpl implements UserService {
 
     @Inject
     UserCredentialRepository userCredentialRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -46,8 +55,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserResponseDTO save(UserRequestDTO requestDTO) {
         UserCredential userCredential = new UserCredential();
-        userCredential.setPassword(requestDTO.getPassword());
-        userCredential = userCredentialRepository.save(userCredential);
+        userCredential.setPassword(passwordEncoder.encode(requestDTO.getPassword()));
 
         User user = userMapper.toEntity(requestDTO);
         user.setUserCredential(userCredential);
@@ -65,5 +73,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(UUID idUser) {
         userRepository.deleteById(idUser);
+    }
+
+    //TODO: TRANSFORMAR ISSO EM UM NOVO SERVICE CHAMADO AuthorizationService
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByEmail(username);
     }
 }
