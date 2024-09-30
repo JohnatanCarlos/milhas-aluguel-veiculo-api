@@ -1,10 +1,9 @@
-package com.milhas.core.user.domain.service.impl;
+package com.milhas.core.authentication.domain.service.impl;
 
-import com.milhas.core.commons.enumerable.MessageError;
 import com.milhas.core.commons.exception.UserNotFoundException;
 import com.milhas.core.user.app.dto.request.UserRequestDTO;
 import com.milhas.core.user.app.dto.response.UserResponseDTO;
-import com.milhas.core.user.domain.service.UserService;
+import com.milhas.core.authentication.domain.service.UserService;
 import com.milhas.core.user.infra.db.entity.User;
 import com.milhas.core.user.infra.db.entity.UserCredential;
 import com.milhas.core.user.infra.db.repository.UserCredentialRepository;

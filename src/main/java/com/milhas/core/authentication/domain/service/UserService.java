@@ -1,4 +1,4 @@
-package com.milhas.core.user.domain.service;
+package com.milhas.core.authentication.domain.service;
 
 import com.milhas.core.user.app.dto.request.UserRequestDTO;
 import com.milhas.core.user.app.dto.response.UserResponseDTO;

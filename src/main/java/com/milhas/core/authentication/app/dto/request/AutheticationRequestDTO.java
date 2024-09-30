@@ -1,3 +1,3 @@
-package com.milhas.core.user.app.dto.request;
+package com.milhas.core.authentication.app.dto.request;
 
 public record AutheticationRequestDTO(String email, String password)  { }

@@ -1,6 +1,6 @@
 package com.milhas.core.user.infra.db.entity;
 
-import com.milhas.core.user.enumerable.UserRole;
+import com.milhas.core.authentication.enumerable.UserRole;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

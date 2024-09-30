@@ -1,4 +1,4 @@
-package com.milhas.core.user.enumerable;
+package com.milhas.core.authentication.enumerable;
 
 public enum UserRole {
     ADMIN("admin"),
