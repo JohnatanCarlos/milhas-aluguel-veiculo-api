@@ -1,14 +1,12 @@
 package com.milhas.core.agency.app.dto.request;
 
+import com.milhas.core.agency.app.dto.response.AddressResponseDTO;
 import lombok.Data;
+import java.util.List;
 
 @Data
 public class AgencyRequestDTO {
-    private String zipCode;
-    private String street;
-    private String number;
-    private String district;
-    private String city;
-    private String country;
-    private String complement;
+    private String name;
+    private String phone;
+    private List<AddressResponseDTO> address;
 }

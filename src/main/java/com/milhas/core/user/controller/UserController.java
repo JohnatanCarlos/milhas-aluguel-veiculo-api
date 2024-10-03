@@ -3,7 +3,7 @@ package com.milhas.core.user.controller;
 import com.milhas.core.commons.dto.Response;
 import com.milhas.core.user.app.dto.request.UserRequestDTO;
 import com.milhas.core.user.app.dto.response.UserResponseDTO;
-import com.milhas.core.authentication.domain.service.UserService;
+import com.milhas.core.user.domain.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
