@@ -22,9 +22,9 @@ public class VehicleGroup {
     @Column(name = "id_group_vehicle", nullable = false, unique = true)
     private UUID id;
 
-//    @OneToMany(mappedBy = "vehicleGroup", fetch = FetchType.LAZY)
-//    private List<Vehicle> vehicles;
-//
+    @OneToMany(mappedBy = "vehicleGroup", fetch = FetchType.LAZY)
+    private List<Vehicle> vehicles;
+
 //    @OneToMany(mappedBy = "optionalVehicle", fetch = FetchType.LAZY)
 //    private List<OptionalVehicle> optional;
 

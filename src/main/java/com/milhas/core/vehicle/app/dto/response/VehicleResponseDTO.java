@@ -1,5 +1,6 @@
 package com.milhas.core.vehicle.app.dto.response;
 
+import com.milhas.core.vehicle.infra.db.entity.Vehicle;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -18,16 +19,16 @@ public class VehicleResponseDTO {
     private String plate;
     private Double power;
 
-//    public VehicleResponseDTO(Vehicle vehicle) {
-//        this.id = vehicle.getId();
-//        this.brand = vehicle.getBrand();
-//        this.model = vehicle.getModel();
-//        this.yearManufacture = vehicle.getYearManufacture();
-//        this.yearModel = vehicle.getYearModel();
-//        this.chassis = vehicle.getChassis();
-//        this.color = vehicle.getColor();
-//        this.documentVehicle = vehicle.getDocumentVehicle();
-//        this.plate = vehicle.getPlate();
-//        this.power = vehicle.getPower();
-//    }
+    public VehicleResponseDTO(Vehicle vehicle) {
+        this.id = vehicle.getId();
+        this.brand = vehicle.getBrand();
+        this.model = vehicle.getModel();
+        this.yearManufacture = vehicle.getYearManufacture();
+        this.yearModel = vehicle.getYearModel();
+        this.chassis = vehicle.getChassis();
+        this.color = vehicle.getColor();
+        this.documentVehicle = vehicle.getDocumentVehicle();
+        this.plate = vehicle.getPlate();
+        this.power = vehicle.getPower();
+    }
 }

@@ -24,9 +24,9 @@ public class VehicleGroupResponseDTO {
         this.category = vehicleGroup.getCategory();
         this.value = vehicleGroup.getValue();
 
-//        this.vehicles = vehicleGroup.getVehicles().stream()
-//                .map(VehicleResponseDTO::new)
-//                .collect(Collectors.toList());
+        this.vehicles = vehicleGroup.getVehicles().stream()
+                .map(VehicleResponseDTO::new)
+                .collect(Collectors.toList());
 //
 //        this.optional = vehicleGroup.getOptional().stream()
 //                .map(OptionalVehicleResponseDTO::new)
