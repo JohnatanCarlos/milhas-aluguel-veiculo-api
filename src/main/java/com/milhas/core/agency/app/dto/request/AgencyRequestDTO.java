@@ -7,6 +7,7 @@ import java.util.List;
 @Data
 public class AgencyRequestDTO {
     private String name;
+    private String code;
     private String phone;
     private List<AddressResponseDTO> address;
 }

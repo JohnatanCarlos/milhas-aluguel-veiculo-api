@@ -27,10 +27,6 @@ public class VehicleGroupResponseDTO {
         this.vehicles = vehicleGroup.getVehicles().stream()
                 .map(VehicleResponseDTO::new)
                 .collect(Collectors.toList());
-//
-//        this.optional = vehicleGroup.getOptional().stream()
-//                .map(OptionalVehicleResponseDTO::new)
-//                .collect(Collectors.toList());
 
     }
 }

@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface AgencyRepository extends JpaRepository<Agency, UUID> {
+public interface AgencyRepository extends JpaRepository<Agency, UUID>, AgencyRepositoryCustom {
+
 }

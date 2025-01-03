@@ -11,11 +11,13 @@ import java.util.UUID;
 public class AgencyResponseDTO {
     private UUID id;
     private String name;
+    private String code;
     private String phone;
     private AddressResponseDTO address;
 
     public AgencyResponseDTO(Agency agency, AddressResponseDTO address){
         this.id = agency.getId();
+        this.code = agency.getCode();
         this.name = agency.getName();
         this.phone = agency.getPhone();
         this.address = address;

@@ -5,10 +5,7 @@ import com.milhas.core.agency.domain.service.AgencyService;
 import com.milhas.core.commons.dto.Response;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,8 +18,8 @@ public class AgencyController {
     AgencyService agencyService;
 
     @GetMapping
-    public Response<List<AgencyResponseDTO>> getAll() {
-        return new Response<>(agencyService.getAll());
+    public Response<List<AgencyResponseDTO>> getAll(@RequestParam(required = false) String name) {
+        return new Response<>(agencyService.getAll(name));
     }
 
     @GetMapping(value = "/{idAgency}")

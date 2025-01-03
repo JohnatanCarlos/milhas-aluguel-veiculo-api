@@ -16,6 +16,7 @@ public class AgencyMapper {
         return Agency.builder()
                 .name(request.getName())
                 .phone(request.getPhone())
+                .code(request.getCode())
                 .build();
     }
 

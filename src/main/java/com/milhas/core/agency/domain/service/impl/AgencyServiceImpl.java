@@ -20,8 +20,8 @@ public class AgencyServiceImpl implements AgencyService {
     AgencyMapper agencyMapper;
 
     @Override
-    public List<AgencyResponseDTO> getAll() {
-        return agencyMapper.toResponseList(agencyRepository.findAll());
+    public List<AgencyResponseDTO> getAll(String name) {
+        return agencyMapper.toResponseList(agencyRepository.findAllCustom(name));
     }
 
     @Override

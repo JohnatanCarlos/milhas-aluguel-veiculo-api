@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface AgencyService {
-    public List<AgencyResponseDTO> getAll();
+    public List<AgencyResponseDTO> getAll(String name);
 
     public AgencyResponseDTO getById(UUID idAgency);
 

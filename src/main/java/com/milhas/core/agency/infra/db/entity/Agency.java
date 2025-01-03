@@ -28,6 +28,9 @@ public class Agency {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "code", nullable = false)
+    private String code;
+
     @Column(name = "phone", nullable = false)
     private String phone;
 
@@ -41,8 +44,9 @@ public class Agency {
     private Boolean isActive = true;
 
     @Builder
-    public Agency(String name, String phone) {
+    public Agency(String name, String code, String phone) {
         this.name = name;
+        this.code = code;
         this.phone = phone;
     }
 
