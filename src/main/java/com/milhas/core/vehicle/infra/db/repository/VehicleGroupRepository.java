@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface VehicleGroupRepository extends JpaRepository<VehicleGroup, UUID> {
+public interface VehicleGroupRepository extends JpaRepository<VehicleGroup, UUID>, VehicleGroupCustomRepository {
 }

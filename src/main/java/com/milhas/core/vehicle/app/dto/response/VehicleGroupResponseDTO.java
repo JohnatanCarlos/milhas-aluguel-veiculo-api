@@ -1,6 +1,7 @@
 package com.milhas.core.vehicle.app.dto.response;
 
 import com.milhas.core.vehicle.infra.db.entity.VehicleGroup;
+import com.milhas.core.vehicle.infra.db.entity.Vehicle;
 import lombok.Data;
 
 import java.util.List;
@@ -24,8 +25,21 @@ public class VehicleGroupResponseDTO {
         this.category = vehicleGroup.getCategory();
         this.value = vehicleGroup.getValue();
 
+        // Filtra apenas veículos ativos e os converte para VehicleResponseDTO
         this.vehicles = vehicleGroup.getVehicles().stream()
-                .map(VehicleResponseDTO::new)
+                .filter(Vehicle::getIsActive) // Filtra os veículos onde isActive = true
+                .map(vehicle -> VehicleResponseDTO.builder()  // Usando o builder
+                        .id(vehicle.getId())
+                        .brand(vehicle.getBrand())
+                        .model(vehicle.getModel())
+                        .yearManufacture(vehicle.getYearManufacture())
+                        .yearModel(vehicle.getYearModel())
+                        .chassis(vehicle.getChassis())
+                        .color(vehicle.getColor())
+                        .documentVehicle(vehicle.getDocumentVehicle())
+                        .plate(vehicle.getPlate())
+                        .power(vehicle.getPower())
+                        .build()) // Construa o DTO com o builder
                 .collect(Collectors.toList());
 
     }
