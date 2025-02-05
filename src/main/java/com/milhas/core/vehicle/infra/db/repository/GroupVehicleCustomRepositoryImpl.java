@@ -1,7 +1,7 @@
 package com.milhas.core.vehicle.infra.db.repository;
 
 import com.milhas.core.reservation.infra.db.entity.Reservation;
-import com.milhas.core.vehicle.infra.db.entity.VehicleGroup;
+import com.milhas.core.vehicle.infra.db.entity.GroupVehicle;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.*;
@@ -10,18 +10,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-public class VehicleGroupCustomRepositoryImpl implements VehicleGroupCustomRepository {
+public class GroupVehicleCustomRepositoryImpl implements GroupVehicleCustomRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public List<VehicleGroup> findAvailableVehicleGroups(LocalDateTime dateDeparture, LocalDateTime dateReturn) {
+    public List<GroupVehicle> findAvailableVehicleGroups(LocalDateTime dateDeparture, LocalDateTime dateReturn) {
         // Inicializa o CriteriaBuilder
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 
         // Cria a consulta para a entidade VehicleGroup
-        CriteriaQuery<VehicleGroup> criteriaQuery = criteriaBuilder.createQuery(VehicleGroup.class);
-        Root<VehicleGroup> vehicleGroupRoot = criteriaQuery.from(VehicleGroup.class);
+        CriteriaQuery<GroupVehicle> criteriaQuery = criteriaBuilder.createQuery(GroupVehicle.class);
+        Root<GroupVehicle> vehicleGroupRoot = criteriaQuery.from(GroupVehicle.class);
 
         // Subquery para verificar reservas existentes
         Subquery<UUID> subquery = criteriaQuery.subquery(UUID.class);

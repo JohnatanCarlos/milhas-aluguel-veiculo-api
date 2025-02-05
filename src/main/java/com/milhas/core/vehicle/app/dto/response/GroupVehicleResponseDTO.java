@@ -1,6 +1,6 @@
 package com.milhas.core.vehicle.app.dto.response;
 
-import com.milhas.core.vehicle.infra.db.entity.VehicleGroup;
+import com.milhas.core.vehicle.infra.db.entity.GroupVehicle;
 import com.milhas.core.vehicle.infra.db.entity.Vehicle;
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Data
-public class VehicleGroupResponseDTO {
+public class GroupVehicleResponseDTO {
     private UUID id;
     private String groupCode;
     private String name;
@@ -18,7 +18,7 @@ public class VehicleGroupResponseDTO {
     private List<VehicleResponseDTO> vehicles;
 
 
-    public VehicleGroupResponseDTO(VehicleGroup vehicleGroup) {
+    public GroupVehicleResponseDTO(GroupVehicle vehicleGroup) {
         this.id = vehicleGroup.getId();
         this.groupCode = vehicleGroup.getGroupCode();
         this.name = vehicleGroup.getName();

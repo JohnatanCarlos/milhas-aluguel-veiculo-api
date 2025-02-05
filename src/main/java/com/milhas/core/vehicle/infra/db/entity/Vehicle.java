@@ -21,7 +21,7 @@ public class Vehicle {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_group_vehicle", nullable = false)
-    private VehicleGroup vehicleGroup;
+    private GroupVehicle vehicleGroup;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "id_optional_vehicle", nullable = false)

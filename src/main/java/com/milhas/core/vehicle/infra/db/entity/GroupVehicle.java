@@ -15,7 +15,7 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @Table(name = "group_vehicle")
-public class VehicleGroup {
+public class GroupVehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -50,7 +50,7 @@ public class VehicleGroup {
     private Boolean isActive = true;
 
     @Builder
-    public VehicleGroup(String groupCode, String name, String category, Double value) {
+    public GroupVehicle(String groupCode, String name, String category, Double value) {
         this.groupCode = groupCode;
         this.name = name;
         this.category = category;

@@ -1,7 +1,7 @@
 package com.milhas.core.reservation.infra.db.entity;
 import com.milhas.core.agency.infra.db.entity.Agency;
 import com.milhas.core.user.infra.db.entity.User;
-import com.milhas.core.vehicle.infra.db.entity.VehicleGroup;
+import com.milhas.core.vehicle.infra.db.entity.GroupVehicle;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +26,7 @@ public class Reservation {
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "id_group_vehicle", nullable = false)
-        private VehicleGroup vehicleGroup;
+        private GroupVehicle vehicleGroup;
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "id_agency_departure", nullable = false)

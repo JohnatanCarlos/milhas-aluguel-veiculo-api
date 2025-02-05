@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class AvailableVehicleGroupDTO {
+public class GroupVehicleAvailableDTO {
     private String id;
     private boolean available;
     private GroupVehicleDTO groupVehicle;

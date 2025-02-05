@@ -1,10 +1,10 @@
 package com.milhas.core.vehicle.domain.service.impl;
 
 import com.milhas.core.vehicle.app.dto.response.*;
-import com.milhas.core.vehicle.domain.service.VehicleGroupService;
-import com.milhas.core.vehicle.infra.db.entity.VehicleGroup;
-import com.milhas.core.vehicle.infra.db.repository.VehicleGroupRepository;
-import com.milhas.core.vehicle.mapper.VehicleGroupMapper;
+import com.milhas.core.vehicle.domain.service.GroupVehicleService;
+import com.milhas.core.vehicle.infra.db.entity.GroupVehicle;
+import com.milhas.core.vehicle.infra.db.repository.GroupVehicleRepository;
+import com.milhas.core.vehicle.mapper.GroupVehicleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,31 +13,31 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class VehicleGroupServiceImpl implements VehicleGroupService {
+public class GroupVehicleServiceImpl implements GroupVehicleService {
 
     @Autowired
-    VehicleGroupRepository vehicleGroupRepository;
+    GroupVehicleRepository vehicleGroupRepository;
 
     @Autowired
-    VehicleGroupMapper vehicleGroupMapper;
+    GroupVehicleMapper groupVehicleMapper;
 
     @Override
-    public List<VehicleGroupResponseDTO> findAll() {
-        return vehicleGroupMapper.toResponseList(vehicleGroupRepository.findAll());
+    public List<GroupVehicleResponseDTO> findAll() {
+        return groupVehicleMapper.toResponseList(vehicleGroupRepository.findAll());
     }
 
     @Override
-    public VehicleGroupResponseDTO findById(UUID idVehicleGroup) {
-        VehicleGroup vehicleGroup = vehicleGroupRepository.findById(idVehicleGroup).orElseThrow();
-        return vehicleGroupMapper.toResponse(vehicleGroup);
+    public GroupVehicleResponseDTO findById(UUID idVehicleGroup) {
+        GroupVehicle vehicleGroup = vehicleGroupRepository.findById(idVehicleGroup).orElseThrow();
+        return groupVehicleMapper.toResponse(vehicleGroup);
     }
 
     @Override
-    public List<AvailableVehicleGroupDTO> findAvailableGroups(LocalDateTime dateDeparture, LocalDateTime dateReturn) {
-        List<VehicleGroup> availableGroups = vehicleGroupRepository.findAvailableVehicleGroups(dateDeparture, dateReturn);
+    public List<GroupVehicleAvailableDTO> findAvailableGroups(LocalDateTime dateDeparture, LocalDateTime dateReturn) {
+        List<GroupVehicle> availableGroups = vehicleGroupRepository.findAvailableVehicleGroups(dateDeparture, dateReturn);
 
         return availableGroups.stream().map(vehicleGroup -> {
-            return AvailableVehicleGroupDTO.builder()
+            return GroupVehicleAvailableDTO.builder()
                     .id(vehicleGroup.getId().toString())
                     .available(true)
                     .groupVehicle(GroupVehicleDTO.builder()
