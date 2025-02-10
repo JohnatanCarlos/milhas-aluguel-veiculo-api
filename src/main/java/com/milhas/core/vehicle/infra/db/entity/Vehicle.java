@@ -23,10 +23,6 @@ public class Vehicle {
     @JoinColumn(name = "id_group_vehicle", nullable = false)
     private GroupVehicle vehicleGroup;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id_optional_vehicle", nullable = false)
-//    private OptionalVehicle optionalVehicle;
-
     @Column(name = "brand", nullable = false)
     private String brand;
 
@@ -63,6 +59,9 @@ public class Vehicle {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
 
+    @Column(name = "status", nullable = false)
+    private String status;
+
     @Builder
     public Vehicle(
             String brand,
@@ -73,7 +72,8 @@ public class Vehicle {
             String color,
             String documentVehicle,
             String plate,
-            Double power
+            Double power,
+            String status
     ){
         this.brand = brand;
         this.model = model;
@@ -84,6 +84,7 @@ public class Vehicle {
         this.documentVehicle = documentVehicle;
         this.plate = plate;
         this.power = power;
+        this.status = status;
     }
 
 }

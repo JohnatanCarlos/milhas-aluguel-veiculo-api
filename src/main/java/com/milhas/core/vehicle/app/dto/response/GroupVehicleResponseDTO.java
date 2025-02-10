@@ -39,6 +39,7 @@ public class GroupVehicleResponseDTO {
                         .documentVehicle(vehicle.getDocumentVehicle())
                         .plate(vehicle.getPlate())
                         .power(vehicle.getPower())
+                        .status((vehicle.getStatus()))
                         .build()) // Construa o DTO com o builder
                 .collect(Collectors.toList());
 

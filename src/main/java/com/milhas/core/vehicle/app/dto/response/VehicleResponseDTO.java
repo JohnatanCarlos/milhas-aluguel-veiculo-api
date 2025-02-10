@@ -19,10 +19,11 @@ public class VehicleResponseDTO {
     private String documentVehicle;
     private String plate;
     private Double power;
+    private String status;
 
     public VehicleResponseDTO(UUID id, String brand, String model, LocalDateTime yearManufacture,
                               LocalDateTime yearModel, String chassis, String color,
-                              String documentVehicle, String plate, Double power) {
+                              String documentVehicle, String plate, Double power, String status) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -33,6 +34,7 @@ public class VehicleResponseDTO {
         this.documentVehicle = documentVehicle;
         this.plate = plate;
         this.power = power;
+        this.status = status;
     }
 
 }
