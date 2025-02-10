@@ -1,5 +1,6 @@
 package com.milhas.core.agency.infra.db.entity;
 
+import com.milhas.core.vehicle.infra.db.entity.GroupVehicle;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -24,6 +26,14 @@ public class Agency {
     @OneToOne
     @JoinColumn(name = "id_address", nullable = false)
     private Address address;
+
+    @ManyToMany
+    @JoinTable(
+            name = "agency_group_vehicle",
+            joinColumns = @JoinColumn(name = "id_agency"),
+            inverseJoinColumns = @JoinColumn(name = "id_group_vehicle")
+    )
+    private List<GroupVehicle> groups;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -44,10 +54,11 @@ public class Agency {
     private Boolean isActive = true;
 
     @Builder
-    public Agency(String name, String code, String phone) {
+    public Agency(String name, String code, String phone, List<GroupVehicle> groups) {
         this.name = name;
         this.code = code;
         this.phone = phone;
+        this.groups = groups;
     }
 
 }

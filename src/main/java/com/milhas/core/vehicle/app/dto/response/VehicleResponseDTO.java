@@ -1,6 +1,5 @@
 package com.milhas.core.vehicle.app.dto.response;
 
-import com.milhas.core.vehicle.infra.db.entity.Vehicle;
 import lombok.Builder;
 import lombok.Data;
 
@@ -20,5 +19,20 @@ public class VehicleResponseDTO {
     private String documentVehicle;
     private String plate;
     private Double power;
+
+    public VehicleResponseDTO(UUID id, String brand, String model, LocalDateTime yearManufacture,
+                              LocalDateTime yearModel, String chassis, String color,
+                              String documentVehicle, String plate, Double power) {
+        this.id = id;
+        this.brand = brand;
+        this.model = model;
+        this.yearManufacture = yearManufacture;
+        this.yearModel = yearModel;
+        this.chassis = chassis;
+        this.color = color;
+        this.documentVehicle = documentVehicle;
+        this.plate = plate;
+        this.power = power;
+    }
 
 }

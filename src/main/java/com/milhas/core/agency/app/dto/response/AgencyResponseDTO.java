@@ -1,7 +1,7 @@
 package com.milhas.core.agency.app.dto.response;
 
-import com.milhas.core.agency.infra.db.entity.Address;
 import com.milhas.core.agency.infra.db.entity.Agency;
+import com.milhas.core.vehicle.app.dto.response.GroupVehicleResponseDTO;
 import lombok.Data;
 
 import java.util.List;
@@ -14,12 +14,14 @@ public class AgencyResponseDTO {
     private String code;
     private String phone;
     private AddressResponseDTO address;
+    private List<GroupVehicleResponseDTO> groups;
 
-    public AgencyResponseDTO(Agency agency, AddressResponseDTO address){
+    public AgencyResponseDTO(Agency agency, AddressResponseDTO address, List<GroupVehicleResponseDTO> groups){
         this.id = agency.getId();
         this.code = agency.getCode();
         this.name = agency.getName();
         this.phone = agency.getPhone();
         this.address = address;
+        this.groups = groups;
     }
 }

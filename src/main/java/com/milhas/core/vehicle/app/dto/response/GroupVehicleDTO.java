@@ -11,4 +11,11 @@ public class GroupVehicleDTO {
     private String groupCode;
     private String name;
     private List<VehicleResponseDTO> vehicles;
+
+    public GroupVehicleDTO(String category, String name, String groupCode, List<VehicleResponseDTO> vehicles) {
+        this.name = name;
+        this.category = category;
+        this.groupCode = groupCode;
+        this.vehicles = vehicles;
+    }
 }
